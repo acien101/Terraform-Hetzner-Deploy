@@ -1,0 +1,9 @@
+hetzner:
+  hosts:
+    ${name}:
+      ansible_host: ${ip}
+      ansible_port: ${port}
+      ansible_user: ${user}
+      ansible_sudo: true
+      ansible_sudo_pass: ${sudopass}
+      become: true
