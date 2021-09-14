@@ -4,6 +4,8 @@ hetzner:
       ansible_host: ${ip}
       ansible_port: ${port}
       ansible_user: ${user}
+      user_uid_1000: ${user}
+      ssh_port: ${port}
       ansible_sudo: true
       ansible_sudo_pass: ${sudopass}
       become: true

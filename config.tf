@@ -59,7 +59,7 @@ provider "hcloud" {
 resource "hcloud_server" "ubuntu18" {
   name = "ubuntu18"
   image = "ubuntu-18.04"
-  server_type = "cx11"
+  server_type = "cx21"
   ssh_keys  = ["${hcloud_ssh_key.default.id}",
                "${hcloud_ssh_key.terraform.id}"]
 
@@ -101,6 +101,6 @@ resource "local_file" "AnsibleInventory" {
   user = "${var.user_uid_1000}"
   sudopass = "${var.pass_uid_1000}"
  })
- 
+
  filename = "inventory"
 }
