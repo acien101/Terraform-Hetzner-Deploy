@@ -55,10 +55,10 @@ provider "hcloud" {
   token = var.hcloud_token
 }
 
-# Create an Ubuntu 18.04 server
-resource "hcloud_server" "ubuntu18" {
-  name = "ubuntu18"
-  image = "ubuntu-18.04"
+# Create an Ubuntu 20.04 server
+resource "hcloud_server" "ubuntu20" {
+  name = "ubuntu20"
+  image = "ubuntu-20.04"
   server_type = "cx21"
   ssh_keys  = ["${hcloud_ssh_key.default.id}",
                "${hcloud_ssh_key.terraform.id}"]
@@ -88,15 +88,15 @@ resource "hcloud_server" "ubuntu18" {
   }
 }
 
-output "server_ip_ubuntu18" {
- value = "${hcloud_server.ubuntu18.ipv4_address}"
+output "server_ip_ubuntu20" {
+ value = "${hcloud_server.ubuntu20.ipv4_address}"
 }
 
 # Create ansible inventory
 resource "local_file" "AnsibleInventory" {
  content = templatefile("inventory.tmpl", {
-  name = hcloud_server.ubuntu18.name
-  ip = hcloud_server.ubuntu18.ipv4_address
+  name = hcloud_server.ubuntu20.name
+  ip = hcloud_server.ubuntu20.ipv4_address
   port = 22
   user = "${var.user_uid_1000}"
   sudopass = "${var.pass_uid_1000}"
